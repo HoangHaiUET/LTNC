@@ -79,7 +79,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseObject.cpp" />
+    <ClCompile Include="Common_Function.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainObject.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseObject.h" />
+    <ClInclude Include="Common_Function.h" />
+    <ClInclude Include="MainObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
