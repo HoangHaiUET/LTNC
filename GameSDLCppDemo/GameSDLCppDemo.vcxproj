@@ -82,6 +82,7 @@
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="CakeObject.cpp" />
     <ClCompile Include="Common_Function.cpp" />
+    <ClCompile Include="ExplosionObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainObject.cpp" />
   </ItemGroup>
@@ -89,6 +90,7 @@
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="CakeObject.h" />
     <ClInclude Include="Common_Function.h" />
+    <ClInclude Include="ExplosionObject.h" />
     <ClInclude Include="MainObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

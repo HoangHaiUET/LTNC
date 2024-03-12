@@ -25,6 +25,7 @@ static SDL_Event g_even;
 namespace SDLCommonFunc {
     SDL_Surface* LoadImage(std::string file_path);
     void ApplySurface(SDL_Surface* src, SDL_Surface* des, int x, int y);
+	void ApplySurfaceClip(SDL_Surface* src, SDL_Surface* des,SDL_Rect* clip,int x, int y);
 	bool CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2);
     void CleanUp();
 }
