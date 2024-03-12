@@ -1,4 +1,4 @@
-﻿Build started 12/03/2024 3:26:29 CH.
+﻿Build started 12/03/2024 4:34:34 CH.
      1>Project "C:\Users\USER\Documents\Visual Studio 2012\Projects\GameSDLCppDemo\GameSDLCppDemo\GameSDLCppDemo.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\Visual\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
@@ -14,4 +14,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.27
+Time Elapsed 00:00:02.53

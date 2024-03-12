@@ -100,6 +100,45 @@ int main(int argc, char* argv[]) {
 			p_bomb->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
 			p_bomb->Show(g_screen);
 
+			bool is_col = SDLCommonFunc::CheckCollision(human_object.GetRect(), p_cake1->GetRect());
+			bool is_col1 = SDLCommonFunc::CheckCollision(human_object.GetRect(), p_cake2->GetRect());
+			bool is_col2 = SDLCommonFunc::CheckCollision(human_object.GetRect(), p_cake3->GetRect());
+			bool is_col3 = SDLCommonFunc::CheckCollision(human_object.GetRect(), p_star->GetRect());
+
+			if (is_col || is_col1 || is_col2 || is_col3)
+			{
+				if (is_col3)
+				{
+					// mark 
+				}
+				else
+				{
+					//mark
+				}
+
+				if (is_col)
+				{
+					p_cake1->Reset(-50);
+				}
+
+				if (is_col1)
+				{
+					p_cake2->Reset(-100);
+				}
+
+				if (is_col2)
+				{
+					p_cake3->Reset(-20);
+				}
+
+				if (is_col3)
+				{
+					p_star->Reset(-5000);
+				}
+			}
+
+
+
 			if (SDL_Flip(g_screen) == -1) return 0;
     }
     
