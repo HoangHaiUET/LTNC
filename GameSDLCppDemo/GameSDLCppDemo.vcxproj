@@ -85,6 +85,9 @@
     <ClCompile Include="ExplosionObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainObject.cpp" />
+    <ClCompile Include="PlayerPower.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="TextObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseObject.h" />
@@ -92,6 +95,8 @@
     <ClInclude Include="Common_Function.h" />
     <ClInclude Include="ExplosionObject.h" />
     <ClInclude Include="MainObject.h" />
+    <ClInclude Include="PlayerPower.h" />
+    <ClInclude Include="TextObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

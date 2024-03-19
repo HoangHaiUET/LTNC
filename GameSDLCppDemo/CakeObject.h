@@ -16,7 +16,6 @@ public:
     void set_y_val(const int& val) { y_val_ = val; }
     void Reset(const int& yboder);
     bool CakeExit(const int& ye);
-
 private:
     int x_val_; // This member variable is not used in the provided implementation
     int y_val_; // This member variable is used for vertical movement
