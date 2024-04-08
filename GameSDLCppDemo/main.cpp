@@ -4,6 +4,9 @@
 #include "ExplosionObject.h"
 #include "PlayerPower.h"
 #include "TextObject.h"
+#include<SDL_mixer.h>
+
+
 
 TTF_Font* g_font_text = NULL;
 bool Init() {
@@ -14,6 +17,14 @@ bool Init() {
   if (g_screen == NULL) {
     return false;
   }
+//  if(Mix_OpenAudio(22050 , MIX_DEFAULT_FORMAT,2,4096) == -1) return false;
+  // read  
+//  g_sound_cake[0] = Mix_LoadWAV("");
+//  g_sound_cake[1] = Mix_LoadWAV("");
+//  g_sound_cake[2] = Mix_LoadWAV("");
+//  g_sound_star = Mix_LoadWAV("star.wav");
+//  g_sound_bob = Mix_LoadWAV("bob.wav")
+// if()
   if(TTF_Init() == -1){
 	  return false;
   }

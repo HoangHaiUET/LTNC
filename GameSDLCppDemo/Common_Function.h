@@ -13,6 +13,7 @@
 #include <cstdarg>
 #include <cwchar>
 #include <iomanip>
+#include <SDL_Mixer.h>
 
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
@@ -21,6 +22,13 @@ const int SCREEN_BPP = 32;
 static SDL_Surface *g_screen = NULL;
 static SDL_Surface *g_bkground = NULL;
 static SDL_Event g_even;
+
+static Mix_Chunk* g_sound_cake[3];
+static Mix_Chunk* g_sound_star ; 
+static Mix_Chunk g_sound_bob ; 
+static Mix_Chunk* g_sound_gameOver ; 
+
+
 
 namespace SDLCommonFunc {
     SDL_Surface* LoadImage(std::string file_path);

@@ -6,7 +6,7 @@ MainObject::MainObject() {
     rect_.w = WIDTH_MAIN_OBJECT;
     rect_.h = HEIGHT_MAIN_OBJECT;
     x_val_ = 0;
-    y_val = 0; // There seems to be a typo here, it should be y_val_ instead of y_val
+    y_val = 0; 
 }
 
 MainObject::~MainObject() {
