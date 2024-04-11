@@ -29,7 +29,7 @@ bool Init() {
 	  return false;
   }
   g_font_text = TTF_OpenFont("Xerox Sans Serif Wide Bold.ttf", 20); // Initialize g_font_text
-  if (g_font_text == 0) {
+  if (g_font_text == NULL) {
     return false; // bug in it
   }
   return true;
@@ -42,6 +42,7 @@ int main(int argc, char* argv[]) {
     bool is_quit = false;
     if (!Init())
         return 0;
+	// load image
 
     g_bkground = SDLCommonFunc::LoadImage(g_name_background);
     if (g_bkground == NULL) {
@@ -54,6 +55,8 @@ int main(int argc, char* argv[]) {
 	PlayerPower player_power;
 	player_power.Init();
 
+
+	// Load text 
 	TextObject mark_game ;
 	mark_game.SetColor(TextObject::WHITE_TEXT);
 
@@ -65,8 +68,8 @@ int main(int argc, char* argv[]) {
         return 0;
     }
 
-    ExplosionObject* exp_main = new ExplosionObject(); // Corrected initialization
-    ret = exp_main->LoadImg(g_name_exp_main); // Provide the correct image file path
+    ExplosionObject* exp_main = new ExplosionObject(); 
+    ret = exp_main->LoadImg(g_name_exp_main); 
 	exp_main->set_clips();
     if (ret == false) return 0;
 
@@ -224,15 +227,15 @@ int main(int argc, char* argv[]) {
             is_gameover = true;
             break; // Exit the loop to handle game over actions
         }
+		std::string val_str_mark = std::to_string(mark_value);
+		std::string strMark("Mark: ");
+		strMark += val_str_mark;
+
+		mark_game.SetText(strMark);   
+		mark_game.CreateGameText(g_font_text, g_screen);
         if (SDL_Flip(g_screen) == -1) return 0;
     }
 
-	std::string val_str_mark = std::to_string(mark_value);
-	std::string strMark("Mark: ");
-	strMark += val_str_mark;
-
-	mark_game.SetText(strMark);   
-	mark_game.CreateGameText(g_font_text, g_screen);
 
     // Handle game over actions here
 

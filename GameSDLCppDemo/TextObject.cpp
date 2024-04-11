@@ -7,8 +7,10 @@ TextObject::TextObject() {
 	text_color_.g = 255;
 	text_color_.b = 255;
 }
-TextObject::~TextObject(){
+
+TextObject::~TextObject() {
 }
+
 void TextObject::SetColor(const int& type) {
 	if (type == RED_TEXT) {
 		SDL_Color color = {255, 0, 0};
