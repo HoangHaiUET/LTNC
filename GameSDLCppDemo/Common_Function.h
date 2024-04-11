@@ -28,7 +28,14 @@ static Mix_Chunk* g_sound_star ;
 static Mix_Chunk g_sound_bob ; 
 static Mix_Chunk* g_sound_gameOver ; 
 
+static char g_name_background[] = {"bkground.png"};
+static char g_name_exp_main[] = {"explosion.png"};
 
+static char g_name_cake_object_1[] = {"doyaki.png"};
+static char g_name_cake_object_2[] = {"cake.png"};
+static char g_name_cake_object_3[] = {"takoyaki.png"};
+static char g_name_cake_object_star[] = {"star.png"};
+static char g_name_cake_object_bomb[] = {"bom.png"};
 
 namespace SDLCommonFunc {
     SDL_Surface* LoadImage(std::string file_path);

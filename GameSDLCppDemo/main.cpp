@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
     if (!Init())
         return 0;
 
-    g_bkground = SDLCommonFunc::LoadImage("bkground.png");
+    g_bkground = SDLCommonFunc::LoadImage(g_name_background);
     if (g_bkground == NULL) {
         return 0;
     }
@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
     }
 
     ExplosionObject* exp_main = new ExplosionObject(); // Corrected initialization
-    ret = exp_main->LoadImg("explosion.png"); // Provide the correct image file path
+    ret = exp_main->LoadImg(g_name_exp_main); // Provide the correct image file path
 	exp_main->set_clips();
     if (ret == false) return 0;
 
@@ -74,35 +74,35 @@ int main(int argc, char* argv[]) {
 
 	// Set Cake Object
     CakeObject* p_cake1 = new CakeObject();
-    ret = p_cake1->LoadImg("doyaki.png");
+    ret = p_cake1->LoadImg(g_name_cake_object_1);
     if (ret == false) {
         return 0;
     }
     p_cake1->SetRect(120 + rand() % 80, -100);
 
     CakeObject* p_cake2 = new CakeObject();
-    ret = p_cake2->LoadImg("cake.png");
+    ret = p_cake2->LoadImg(g_name_cake_object_2);
     if (ret == false) {
         return 0;
     }
     p_cake2->SetRect(120 + rand() % 80, -100);
 
     CakeObject* p_cake3 = new CakeObject();
-    ret = p_cake3->LoadImg("takoyaki.png");
+    ret = p_cake3->LoadImg(g_name_cake_object_3);
     if (ret == false) {
         return 0;
     }
     p_cake3->SetRect(120 + rand() % 80, -100);
 
     CakeObject* p_star = new CakeObject();
-    ret = p_star->LoadImg("star.png");
+    ret = p_star->LoadImg(g_name_cake_object_star);
     if (ret == false) {
         return 0;
     }
     p_star->SetRect(360 + rand() % 80, -5000);
 
     CakeObject* p_bomb = new CakeObject();
-    ret = p_bomb->LoadImg("bom.png");
+    ret = p_bomb->LoadImg(g_name_cake_object_bomb);
     if (ret == false) {
         return 0;
     }
