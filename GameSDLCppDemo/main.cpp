@@ -9,6 +9,8 @@
 
 
 TTF_Font* g_font_text = NULL;
+TTF_Font* g_font_menu = NULL;
+
 bool Init() {
   if (SDL_Init(SDL_INIT_EVERYTHING) == -1) {
     return false;
@@ -29,13 +31,12 @@ bool Init() {
 	  return false;
   }
   g_font_text = TTF_OpenFont("Xerox Sans Serif Wide Bold.ttf", 20); // Initialize g_font_text
-  if (g_font_text == NULL) {
+  g_font_text = TTF_OpenFont("Xerox Sans Serif Wide Bold.ttf", 50);
+  if (g_font_text == NULL || g_font_menu == NULL) {
     return false; // bug in it
   }
   return true;
 }
-
-
 
 int main(int argc, char* argv[]) {
 
@@ -116,7 +117,9 @@ int main(int argc, char* argv[]) {
 	unsigned int die_count = 0 ;
 	unsigned int mark_value = 0 ;
 
-
+	int ret_menu = SDLCommonFunc::ShowMenu(g_screen,g_font_text);
+	if(ret_menu == 1)
+		is_quit = true;
 	// While Loop
     while (!is_quit) {
         while (SDL_PollEvent(&g_even)) {
