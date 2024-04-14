@@ -1,20 +1,16 @@
 #ifndef COMMON_FUNCTION_H_
 #define COMMON_FUNCTION_H_
 
-#include<SDL.h>
-#include<string>
-#include<Windows.h>
-#include<SDL_image.h>
-#include<SDL_ttf.h>
-#include <fstream>
-#include <SDL_events.h>
-#include<math.h>
-#include <sstream>
-#include <cstdarg>
-#include <cwchar>
-#include <iomanip>
-#include <SDL_Mixer.h>
-#include "TextObject.h"
+#include <Windows.h>
+#include <string>
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_mixer.h>
+#include <SDL_ttf.h>
+
+#define GA_FAILED -1
+#define GA_SUCCESS 0;
+
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
 const int SCREEN_BPP = 32;
@@ -38,16 +34,16 @@ static char g_name_cake_object_3[] = {"takoyaki.png"};
 static char g_name_cake_object_star[] = {"star.png"};
 static char g_name_cake_object_bomb[] = {"bom.png"};
 
-namespace SDLCommonFunc {
-    SDL_Surface* LoadImage(std::string file_path);
-    SDL_Rect ApplySurface(SDL_Surface* src, SDL_Surface* des, int x, int y);
-	void ApplySurfaceClip(SDL_Surface* src, SDL_Surface* des,SDL_Rect* clip,int x, int y);
+namespace SDLCommonFunc
+{
+	SDL_Surface* LoadImage(std::string file_path);
+	void CleanUp();
+	SDL_Rect ApplySurface(SDL_Surface* src, SDL_Surface* des, int x, int y);
+	void ApplySurfaceClip(SDL_Surface* src, SDL_Surface* des, SDL_Rect* clip, int x, int y);
 	bool CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2);
-    void CleanUp();
 	int ShowMenu(SDL_Surface* des, TTF_Font* font);
-	bool CheckFocusWithRect(const int &x, const int &y , const SDL_Rect& rect);
-
-
+	bool CheckFocusWithRect(const int& x, const int& y,  const SDL_Rect& rect);
 }
+
 
 #endif 

@@ -11,31 +11,32 @@
 TTF_Font* g_font_text = NULL;
 TTF_Font* g_font_menu = NULL;
 
-bool Init() {
-  if (SDL_Init(SDL_INIT_EVERYTHING) == -1) {
-    return false;
-  }
-  g_screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE);
-  if (g_screen == NULL) {
-    return false;
-  }
-//  if(Mix_OpenAudio(22050 , MIX_DEFAULT_FORMAT,2,4096) == -1) return false;
-  // read  
-//  g_sound_cake[0] = Mix_LoadWAV("");
-//  g_sound_cake[1] = Mix_LoadWAV("");
-//  g_sound_cake[2] = Mix_LoadWAV("");
-//  g_sound_star = Mix_LoadWAV("star.wav");
-//  g_sound_bob = Mix_LoadWAV("bob.wav")
-// if()
-  if(TTF_Init() == -1){
-	  return false;
-  }
-  g_font_text = TTF_OpenFont("Xerox Sans Serif Wide Bold.ttf", 20); // Initialize g_font_text
-  g_font_text = TTF_OpenFont("Xerox Sans Serif Wide Bold.ttf", 50);
-  if (g_font_text == NULL || g_font_menu == NULL) {
-    return false; // bug in it
-  }
-  return true;
+bool Init()
+{
+	if (SDL_Init(SDL_INIT_EVERYTHING) == GA_FAILED)
+	{
+		return false;
+	}
+
+	g_screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, SDL_SWSURFACE);
+
+	if (g_screen == NULL)
+		return false;
+
+	if (TTF_Init() == GA_FAILED)
+	{
+		return false;
+	}
+
+
+	g_font_text = TTF_OpenFont("Xerox Sans Serif Wide Bold.ttf", 20);
+	g_font_menu = TTF_OpenFont("VSOUVB.ttf", 30);
+	if (g_font_text == NULL || g_font_menu == NULL)
+	{
+		return false;
+	}
+
+	return true;
 }
 
 int main(int argc, char* argv[]) {
@@ -117,13 +118,17 @@ int main(int argc, char* argv[]) {
 	unsigned int die_count = 0 ;
 	unsigned int mark_value = 0 ;
 
-	int ret_menu = SDLCommonFunc::ShowMenu(g_screen,g_font_text);
-	if(ret_menu == 1)
+	int ret_menu = SDLCommonFunc::ShowMenu(g_screen, g_font_menu);
+	if (ret_menu == 1)
 		is_quit = true;
+
 	// While Loop
-    while (!is_quit) {
-        while (SDL_PollEvent(&g_even)) {
-            if (g_even.type == SDL_QUIT) {
+    while (!is_quit) 
+	{
+        while (SDL_PollEvent(&g_even)) 
+		{
+            if (g_even.type == SDL_QUIT) 
+			{
                 is_quit = true;
                 break;
             }
@@ -218,7 +223,7 @@ int main(int argc, char* argv[]) {
             for (int ex = 0; ex < 4; ex++) {
                 int x_pos = (p_bomb->GetRect().x + p_bomb->GetRect().w * 0.5) - EXPLOSION_WIDTH * 0.5;
                 int y_pos = (p_bomb->GetRect().y + p_bomb->GetRect().h * 0.5) - EXPLOSION_HEIGHT * 0.5;
-                exp_main->set_frame(ex); // Set the frame before showing
+                exp_main->set_frame(ex);
                 exp_main->SetRect(x_pos, y_pos);
                 exp_main->ShowEx(g_screen);
                 SDL_Delay(150);
@@ -236,12 +241,13 @@ int main(int argc, char* argv[]) {
 
 		mark_game.SetText(strMark);   
 		mark_game.CreateGameText(g_font_text, g_screen);
-        if (SDL_Flip(g_screen) == -1) return 0;
+        if (SDL_Flip(g_screen) == -1)
+		{
+			SDLCommonFunc::CleanUp();
+			SDL_Quit();
+			return 0;
+		}
     }
-
-
-    // Handle game over actions here
-
     // Clean up resources
     SDLCommonFunc::CleanUp();
     SDL_Quit();
