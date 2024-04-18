@@ -67,6 +67,11 @@
       <ProjName>GameSDLCppDemo</ProjName>
     </ProjBinary>
   </Binaries>
+  <Reports>
+    <Report>
+      <Path>GameSDLCppDemo240419.vspx</Path>
+    </Report>
+  </Reports>
   <Launches>
     <ProjBinary>
       <Path>:PB:{37D29119-E88D-479A-B333-D77ABC7A5B1D}|GameSDLCppDemo\GameSDLCppDemo.vcxproj</Path>

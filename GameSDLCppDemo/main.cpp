@@ -50,7 +50,8 @@ int main(int argc, char* argv[]) {
     if (g_bkground == NULL) {
         return 0;
     }
-
+	g_exit_menu = SDLCommonFunc::LoadImage(g_name_background_exit);
+	if(g_exit_menu == NULL) return 0 ;
     SDLCommonFunc::ApplySurface(g_bkground, g_screen, 0, 0);
 
 	// load player_power 
@@ -62,7 +63,7 @@ int main(int argc, char* argv[]) {
 	TextObject mark_game ;
 	mark_game.SetColor(TextObject::WHITE_TEXT);
 
-
+	// Load human object
     MainObject human_object;
     human_object.SetRect(300, 420);
     bool ret = human_object.LoadImg("object.png");
@@ -70,6 +71,7 @@ int main(int argc, char* argv[]) {
         return 0;
     }
 
+	// Load Explosion Object 
     ExplosionObject* exp_main = new ExplosionObject(); 
     ret = exp_main->LoadImg(g_name_exp_main); 
 	exp_main->set_clips();
@@ -111,7 +113,7 @@ int main(int argc, char* argv[]) {
     if (ret == false) {
         return 0;
     }
-    p_bomb->SetRect(480 + rand() % 80, -300);
+    p_bomb->SetRect(480 + rand() % 1000, -1000);
 
     bool is_gameover = false;
 
@@ -195,52 +197,61 @@ int main(int argc, char* argv[]) {
 		bool is_die2 = p_cake2->CakeExit(p_cake2->GetRect().y);
 		bool is_die3 = p_cake3->CakeExit(p_cake3->GetRect().y);
 
-		if (is_die1 || is_die2 || is_die3) {
-			int die_count = 0; // Reset die_count
-			if (is_die1) {
+		if (is_die1 || is_die2 || is_die3) 
+		{
+			die_count++;
+			player_power.Decrease();
+			player_power.Render(g_screen);
+			if (is_die1) 
+			{
 				die_count++;
 				p_cake1->Reset(-100);
 			}
-			if (is_die2) {
+			if (is_die2)
+			{
 				die_count++;
 				p_cake2->Reset(-50);
 			}
-			if (is_die3) {
+			if (is_die3) 
+			{
 				die_count++;
 				p_cake3->Reset(-200);
 			}
-				if (die_count != 0) {
-				int die_count = 0 ;
-				player_power.Decrease();
-				player_power.Render(g_screen);
+		}
+        //check collision main with bomb
+		bool is_bomb = SDLCommonFunc::CheckCollision(human_object.GetRect(), p_bomb->GetRect());
+		if (is_bomb) {
+			for (int ex = 0; ex < 4; ex++)
+			{
+				int x_pos = (p_bomb->GetRect().x + p_bomb->GetRect().w * 0.5) - EXPLOSION_WIDTH * 0.5;
+				int y_pos = (p_bomb->GetRect().y + p_bomb->GetRect().h * 0.5) - EXPLOSION_HEIGHT * 0.5;
+				exp_main->set_frame(ex);
+				exp_main->SetRect(x_pos, y_pos);
+				exp_main->ShowEx(g_screen);
+				SDL_Delay(150);
+				if (SDL_Flip(g_screen) == -1) {
+					return 0;
+				}
 			}
 		}
-
-        // Check collision with bomb
-
-        bool is_bomb = SDLCommonFunc::CheckCollision(human_object.GetRect(), p_bomb->GetRect());
-        if (is_bomb) {
-            for (int ex = 0; ex < 4; ex++) {
-                int x_pos = (p_bomb->GetRect().x + p_bomb->GetRect().w * 0.5) - EXPLOSION_WIDTH * 0.5;
-                int y_pos = (p_bomb->GetRect().y + p_bomb->GetRect().h * 0.5) - EXPLOSION_HEIGHT * 0.5;
-                exp_main->set_frame(ex);
-                exp_main->SetRect(x_pos, y_pos);
-                exp_main->ShowEx(g_screen);
-                SDL_Delay(150);
-                if (SDL_Flip(g_screen) == -1) {
-                    return 0;
-                }
-            }
-            // Handle game over
-            is_gameover = true;
-            break; // Exit the loop to handle game over actions
-        }
+		// Handle Game Over 
+		if(die_count >= 3 || is_bomb)
+		{
+			SDL_Delay(1000);
+			is_gameover = true;
+			SDLCommonFunc::CleanUp();
+			SDLCommonFunc::ApplySurface(g_exit_menu, g_screen, 0, 0);
+			/*SDLCommonFunc::ApplySurface(gMark, g_screen, 250, 250);*/
+		}
+		// Show mark to the screen 
 		std::string val_str_mark = std::to_string(mark_value);
 		std::string strMark("Mark: ");
 		strMark += val_str_mark;
 
 		mark_game.SetText(strMark);   
 		mark_game.CreateGameText(g_font_text, g_screen);
+
+		//update screen;
         if (SDL_Flip(g_screen) == -1)
 		{
 			SDLCommonFunc::CleanUp();
@@ -251,5 +262,6 @@ int main(int argc, char* argv[]) {
     // Clean up resources
     SDLCommonFunc::CleanUp();
     SDL_Quit();
+	TTF_Quit();
     return 1;
 }

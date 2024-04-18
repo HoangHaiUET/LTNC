@@ -19,7 +19,7 @@ static SDL_Surface* g_screen = NULL;
 static SDL_Surface* g_bkground = NULL;
 static SDL_Event g_even;
 static SDL_Surface* g_img_menu = NULL;
-
+static SDL_Surface* g_exit_menu = NULL;
 static Mix_Chunk* g_sound_cake[3];
 static Mix_Chunk* g_sound_star ; 
 static Mix_Chunk g_sound_bob ; 
@@ -33,6 +33,7 @@ static char g_name_cake_object_2[] = {"cake.png"};
 static char g_name_cake_object_3[] = {"takoyaki.png"};
 static char g_name_cake_object_star[] = {"star.png"};
 static char g_name_cake_object_bomb[] = {"bom.png"};
+static char g_name_background_exit[] = {"bkexit.png"};
 
 namespace SDLCommonFunc
 {
