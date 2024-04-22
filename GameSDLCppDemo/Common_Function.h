@@ -24,6 +24,8 @@ static Mix_Chunk* g_sound_cake[3];
 static Mix_Chunk* g_sound_star ; 
 static Mix_Chunk g_sound_bob ; 
 static Mix_Chunk* g_sound_gameOver ; 
+static SDL_Surface* gMark = NULL;
+static SDL_Surface* g_img_back_menu = NULL;
 
 static char g_name_background[] = {"bkground.png"};
 static char g_name_exp_main[] = {"explosion.png"};
@@ -43,7 +45,9 @@ namespace SDLCommonFunc
 	void ApplySurfaceClip(SDL_Surface* src, SDL_Surface* des, SDL_Rect* clip, int x, int y);
 	bool CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2);
 	int ShowMenu(SDL_Surface* des, TTF_Font* font);
+	int ShowBackMenu(SDL_Surface* des, TTF_Font* font);
 	bool CheckFocusWithRect(const int& x, const int& y,  const SDL_Rect& rect);
+
 }
 
 

@@ -10,9 +10,12 @@ class TextObject : public BaseObject
 public:
 	enum TextColor
 	{
-		RED_TEXT  = 0,
+		RED_TEXT = 0,
 		WHITE_TEXT = 1,
 		BLACK_TEXT = 2,
+		GREEN_TEXT = 3,
+		YELLOW_TEXT = 4,
+		NAVY_TEXT = 5,
 	};
 
 	TextObject();
@@ -22,7 +25,6 @@ public:
 	void SetColor(const int& type);
 	void CreateGameText (TTF_Font* font, SDL_Surface* des);
 private:
-
 	std::string str_val_;
 	SDL_Color text_color_;
 };

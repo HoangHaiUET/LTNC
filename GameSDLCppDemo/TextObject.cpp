@@ -28,6 +28,18 @@ void TextObject::SetColor(const int& type)
 		SDL_Color color = {255, 255, 255};
 		text_color_ = color;
 	}
+	else if (type == GREEN_TEXT){
+		SDL_Color color = {0, 128, 0};
+		text_color_ = color;
+	}
+	else if (type == YELLOW_TEXT){
+		SDL_Color color = {255, 255, 0};
+		text_color_ = color;
+	}
+	else if (type == NAVY_TEXT){
+		SDL_Color color = {0, 0, 128};
+		text_color_ = color;
+	}
 	else
 	{
 		SDL_Color color = {0, 0, 0};
