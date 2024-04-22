@@ -1,4 +1,4 @@
-#include "Common_Function.h"
+﻿#include "Common_Function.h"
 #include "TextObject.h"
 
 bool SDLCommonFunc::CheckFocusWithRect(const int& x, const int& y, const SDL_Rect& rect)
@@ -116,7 +116,7 @@ int SDLCommonFunc::ShowBackMenu(SDL_Surface* des, TTF_Font* font)
 	g_img_back_menu = LoadImage("bkexit.png");
 	if (g_img_back_menu == NULL)
 	{
-		return 1;
+		return 1; // Trả về 1 nếu không thể tải hình ảnh
 	}
 
 	const int kMenuItemNum = 2;
@@ -129,14 +129,15 @@ int SDLCommonFunc::ShowBackMenu(SDL_Surface* des, TTF_Font* font)
 
 	TextObject text_menu[kMenuItemNum];
 
-	text_menu[0].SetText("Play Game");
-	text_menu[0].SetColor(TextObject::BLACK_TEXT);
-	text_menu[0].SetRect(pos_arr[0].x, pos_arr[0].y);
+	text_menu[0].SetText("Back to Main Menu"); // Thay đổi nội dung của lựa chọn thứ nhất
+	text_menu[1].SetText("Quit Game"); // Lựa chọn thứ hai vẫn là "Quit Game"
 
-	text_menu[1].SetText("Exit");
-	text_menu[1].SetColor(TextObject::BLACK_TEXT);
-	text_menu[1].SetRect(pos_arr[1].x, pos_arr[1].y);
-
+	// Khởi tạo màu cho menu
+	for (int i = 0; i < kMenuItemNum; ++i)
+	{
+		text_menu[i].SetColor(TextObject::BLACK_TEXT);
+		text_menu[i].SetRect(pos_arr[i].x, pos_arr[i].y);
+	}
 
 	bool selected[kMenuItemNum] = {0, 0};
 	int xm = 0;
@@ -144,7 +145,7 @@ int SDLCommonFunc::ShowBackMenu(SDL_Surface* des, TTF_Font* font)
 	SDL_Event m_event;
 	while (true)
 	{
-		SDLCommonFunc::ApplySurface(g_img_menu, des, 0, 0);
+		SDLCommonFunc::ApplySurface(g_img_back_menu, des, 0, 0);
 		for (int i = 0; i < kMenuItemNum; ++i)
 		{
 			text_menu[i].CreateGameText(font, des);
@@ -155,43 +156,46 @@ int SDLCommonFunc::ShowBackMenu(SDL_Surface* des, TTF_Font* font)
 			switch (m_event.type)
 			{
 			case SDL_QUIT:
-				return 1;
+				return 1; // Trở về màn hình chính nếu cửa sổ bị đóng
 			case SDL_MOUSEMOTION:
-				{
-					xm = m_event.motion.x;
-					ym = m_event.motion.y;
+				xm = m_event.motion.x;
+				ym = m_event.motion.y;
 
-					for (int i = 0; i < kMenuItemNum; i++)
+				for (int i = 0; i < kMenuItemNum; i++)
+				{
+					if (CheckFocusWithRect(xm, ym, text_menu[i].GetRect()))
 					{
-						if (CheckFocusWithRect(xm, ym, text_menu[i].GetRect()))
+						if (selected[i] == false)
 						{
-							if (selected[i] == false)
-							{
-								selected[i] = 1;
-								text_menu[i].SetColor(TextObject::RED_TEXT);
-							}
+							selected[i] = true;
+							text_menu[i].SetColor(TextObject::RED_TEXT);
 						}
-						else
+					}
+					else
+					{
+						if (selected[i] == true)
 						{
-							if (selected[i] == true)
-							{
-								selected[i] = 0;
-								text_menu[i].SetColor(TextObject::BLACK_TEXT);
-							}
+							selected[i] = false;
+							text_menu[i].SetColor(TextObject::BLACK_TEXT);
 						}
 					}
 				}
 				break;
 			case SDL_MOUSEBUTTONDOWN:
-				{
-					xm = m_event.button.x;
-					ym = m_event.button.y;
+				xm = m_event.button.x;
+				ym = m_event.button.y;
 
-					for (int i = 0; i < kMenuItemNum; i++)
+				for (int i = 0; i < kMenuItemNum; i++)
+				{
+					if (CheckFocusWithRect(xm, ym, text_menu[i].GetRect()))
 					{
-						if (CheckFocusWithRect(xm, ym, text_menu[i].GetRect()))
+						if (i == 0) // Nếu người chơi chọn "Back to Main Menu"
 						{
-							return i;
+							return -2; // Trả về -2 để chỉ ra trở về màn hình menu ban đầu
+						}
+						else if (i == 1) // Nếu người chơi chọn "Quit Game"
+						{
+							return 1; // Trả về 1 để kết thúc trò chơi
 						}
 					}
 				}
@@ -199,8 +203,9 @@ int SDLCommonFunc::ShowBackMenu(SDL_Surface* des, TTF_Font* font)
 			case SDL_KEYDOWN:
 				if (m_event.key.keysym.sym == SDLK_ESCAPE)
 				{
-					return 1;
+					return 1; // Trở về màn hình chính nếu người dùng nhấn ESC
 				}
+				break;
 			default:
 				break;
 			}
@@ -211,6 +216,8 @@ int SDLCommonFunc::ShowBackMenu(SDL_Surface* des, TTF_Font* font)
 
 	return 1;
 }
+
+
 
 SDL_Surface* SDLCommonFunc::LoadImage(std::string file_path)
 {
