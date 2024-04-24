@@ -114,7 +114,7 @@ int main(int argc, char* argv[]) {
 
 	bool is_gameover = false;
 
-	unsigned int die_count = 0 ;
+	unsigned int die_count = 3 ;
 	unsigned int mark_value = 0 ;
 	unsigned int star_value = 0 ;
 
@@ -205,7 +205,7 @@ int main(int argc, char* argv[]) {
 
 		if (is_die1 || is_die2 || is_die3) 
 		{
-			die_count++;
+			die_count--;
 			player_power.Decrease();
 			player_power.Render(g_screen);
 			if (is_die1) 
@@ -224,16 +224,16 @@ int main(int argc, char* argv[]) {
 				is_die3 = false;
 			}
 		}
-		//if(star_value == 10)
-		//{
-		//	if(die_count > 0)
-		//	{
-		//		die_count--;
-		//	}
-		//	player_power.Increase();
-		//	player_power.Render(g_screen);
-		//	star_value = 0 ;
-		//}
+		if(star_value == 10)
+		{
+			if(die_count < 3)
+			{
+				die_count++;
+			}
+			player_power.Increase();
+			player_power.Render(g_screen);
+			star_value = 0 ;
+		}
 
 		//check collision main with bomb
 		bool is_bomb = SDLCommonFunc::CheckCollision(human_object.GetRect(), p_bomb->GetRect());
@@ -264,7 +264,7 @@ int main(int argc, char* argv[]) {
 		mark_game.CreateGameText(g_font_text, g_screen);
 		// Handle Game Over 
 
-		if(die_count >= 3 || is_bomb)
+		if(die_count < 1 || is_bomb)
 		{
 			SDL_Delay(1000);
 			is_gameover = true;
@@ -279,15 +279,16 @@ int main(int argc, char* argv[]) {
 			if(ret_back_menu == 1 ) is_quit = true;
 			else
 			{
-				
 				SDLCommonFunc::CleanUp();
 				human_object.SetRect(300, 420);
-				die_count = 0 ;
+				die_count = 3 ;
 				mark_value = 0 ; 
+				star_value = 0 ;
 				player_power.Init();
 				p_cake1->Reset(-50);
 				p_cake2->Reset(-100);
 				p_cake3->Reset(-100);
+				p_bomb->Reset(-100);
 				SDLCommonFunc::CleanUp();
 			}
 		}
