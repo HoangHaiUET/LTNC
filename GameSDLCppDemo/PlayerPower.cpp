@@ -38,13 +38,15 @@ void PlayerPower::Init()
 void PlayerPower::Decrease()
 {
 	number_ --;
-	pos_list_.pop_back();
+	if(!pos_list_.empty())
+	{
+		pos_list_.pop_back();
+	}
 }
 void PlayerPower::Increase()
 {
 	if (number_ < 3)
 	{
-		number_++;
 		if (number_ == 1)
 		{
 			AddPos(60);
@@ -53,5 +55,6 @@ void PlayerPower::Increase()
 		{
 			AddPos(120);
 		}
+		number_++;
 	}
 }

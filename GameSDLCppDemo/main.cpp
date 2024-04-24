@@ -5,7 +5,6 @@
 #include "PlayerPower.h"
 #include "TextObject.h"
 #include <SDL_mixer.h>
-#include <SDL.h>
 
 TTF_Font* g_font_text = NULL;
 TTF_Font* g_font_menu = NULL;
@@ -27,14 +26,12 @@ bool Init()
 		return false;
 	}
 
-
 	g_font_text = TTF_OpenFont("PressStart2P-vaV7.ttf", 20);
 	g_font_menu = TTF_OpenFont("SportGame-K7nWo.otf", 30);
 	if (g_font_text == NULL || g_font_menu == NULL)
 	{
 		return false;
 	}
-
 	return true;
 }
 
@@ -183,17 +180,17 @@ int main(int argc, char* argv[]) {
 
 			if (is_col) 
 			{
-				p_cake1->Reset(-50);
+				p_cake1->Reset(-500);
 			}
 
 			if (is_col1) 
 			{
-				p_cake2->Reset(-100);
+				p_cake2->Reset(-1000);
 			}
 
 			if (is_col2)
 			{
-				p_cake3->Reset(-20);
+				p_cake3->Reset(-200);
 			}
 		}
 
@@ -206,7 +203,7 @@ int main(int argc, char* argv[]) {
 		if (is_die1 || is_die2 || is_die3) 
 		{
 			die_count--;
-			player_power.Decrease();
+			player_power.Decrease(); // _number-- 
 			player_power.Render(g_screen);
 			if (is_die1) 
 			{
@@ -230,7 +227,7 @@ int main(int argc, char* argv[]) {
 			{
 				die_count++;
 			}
-			player_power.Increase();
+			player_power.Increase(); // _number++
 			player_power.Render(g_screen);
 			star_value = 0 ;
 		}

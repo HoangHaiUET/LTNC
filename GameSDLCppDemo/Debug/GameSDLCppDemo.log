@@ -1,11 +1,10 @@
-﻿Build started 23/04/2024 11:20:42 CH.
+﻿Build started 24/04/2024 9:43:37 CH.
      1>Project "D:\Study\LTNC\GameSDLCppDemo\GameSDLCppDemo.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Visual\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
-         main.cpp
+         D:\Visual\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt PlayerPower.cpp
+         PlayerPower.cpp
      1>d:\study\ltnc\gamesdlcppdemo\baseobject.h(14): warning C4244: '=' : conversion from 'const double' to 'Sint16', possible loss of data
-     1>d:\study\ltnc\gamesdlcppdemo\main.cpp(245): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-     1>d:\study\ltnc\gamesdlcppdemo\main.cpp(246): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>d:\study\ltnc\gamesdlcppdemo\playerpower.cpp(20): warning C4018: '<' : signed/unsigned mismatch
        Link:
          D:\Visual\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Study\LTNC\Debug\GameSDLCppDemo.exe" /INCREMENTAL /NOLOGO SDL.lib SDLMain.lib SDL_image.lib SDL_mixer.lib SDL_ttf.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Study\LTNC\Debug\GameSDLCppDemo.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Study\LTNC\Debug\GameSDLCppDemo.lib" /MACHINE:X86 Debug\BaseObject.obj
          Debug\CakeObject.obj
@@ -20,4 +19,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.14
+Time Elapsed 00:00:01.96
