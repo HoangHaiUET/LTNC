@@ -3,18 +3,16 @@
 # Try Catch - HoangHaiUET
 
 - Thử nghiệm game: [............................](.......)
-- Phá đảo game: .................................
 
 # Giới thiệu game
 
-Try_Catch là 1 game thuộc thể loại Catch Fruit . Nhiệm vụ của bạn là điều khiển chú mèo máy Doraemon tới những vị trí thích hợp để nhặt được những chiếc bánh đồng thời né tránh những quả bom gây nguy hiểm cho Doraemon . Hãy cố gắng hết sức để đem về số điểm cao nhất  
+Try_Catch là 1 game thuộc thể loại game thiếu nhi . Nhiệm vụ của bạn là điều khiển chú mèo máy Doraemon tới những vị trí thích hợp để nhặt được những chiếc bánh đồng thời né tránh những quả bom gây nguy hiểm cho Doraemon . Hãy cố gắng hết sức để đem về số điểm cao nhất  
 
 - [0. Cách tải game](#0-cách-tải-game)
     * [ Bao gồm code và có thể biên dịch.](#bao-gồm-code-và-có-thể-biên-dịch)
 - [1. Bắt đầu game](#1bắt-đầu-game)
 - [2. Các thành phần trong game:](#2-các-thành-phần-trong-game)
 - [3. Cách chơi](#3-cách-chơi)
-    * [ Các loại bánh](#các-loại-bánh)
 - [4. Kết thúc game](#4-kết-thúc-game)
 - [Về đồ họa của game:](#về-đồ-họa-của-game)
 - [Về source code game](#về-source-code-game)
@@ -47,7 +45,7 @@ Chờ một chút rồi click vào nút “PLAY GAME” để bắt đầu chơi
 Và người chơi sẽ ngay lập tức nhìn thấy mèo máy Doraemon 
 <div style="text-align: center;">
 
-![image](resources/preview/menu.jpg)
+![image](resources/preview/menu.png)
 
 </div>
 
@@ -76,19 +74,19 @@ Và người chơi sẽ ngay lập tức nhìn thấy mèo máy Doraemon
 
 <div style="text-align: center;">
 
-![image](resources/preview/mark_bar.png)
+![image](resources/preview/mark_bar.jpg)
 </div>
 - Thanh mạng (heart bar): là thanh mạng của bạn nếu hết mạng thì bạn thua
 <div style="text-align: center;">
 
-![image](resources/preview/heart_bar.png)
+![image](resources/preview/heart_bar.jpg)
 </div>
 
 - Bố cục game cơ bản:
 
 <div style="text-align: center;">
 
-![image](resources/preview/first_game.png)
+![image](resources/preview/first_game.jpg)
 </div>
 
  
@@ -110,7 +108,7 @@ Dựa vào nút di chuyển -> hoặc <- để di chuyển Doraemon của bạn 
 
 ### Về đồ họa của game:
 
-[[Toàn bộ hình ảnh được tải xuống từ google hoặc design bằng Canva]](about_graphics.md)
+[[Google - Canva]]
 
 ### Về source code game:
 
@@ -147,5 +145,11 @@ Dựa vào nút di chuyển -> hoặc <- để di chuyển Doraemon của bạn 
         + Khi va chạm , các Cake_Object sẽ được Reset <br/>
         + Xử lí bộ nhớ sau khi thoát game <br/>
 
-`Cảnh báo : `<br/>
-Việc di chuyển của Doraemon : Khi bạn di chuyển sang trái hoặc phải mà muốn di chuyển quay ngược chiều thì Doraemon sẽ bị dừng lại trong vòng 1 giây do quán tính . Hơn nữa , khi vừa di chuyển và va chạm với bomb hoặc hết mạng thì trong lần chơi tiếp theo Doraemon sẽ bị choáng và tự di chuyển theo chiều trước khi thua (Bạn phải ấn nút di chuyển và thả nút di chuyển để giúp Doraemon tỉnh táo trở lại)
+`Luật chơi`<br/>
+        *   Di chuyển Doraemon tới những chiếc bánh và tránh xa những quả bomb<br/>
+        *   Khi va chạm phải quả bomb hoặc hết mang bạn sẽ thua <br/>
+        *   Bắt được 1 chiếc bánh sẽ được 30 điểm , 50 điểm nhưng khi để rơi 1 chiếc bánh sẽ mất 1 mạng <br/>
+        *   Khi không bắt được ngôi sao hy vọng bạn sẽ không bị trừ mạng
+        *   Ngôi sao hi vọng sẽ chỉ mang về cho bạn 10 điểm nhưng tích đủ 10 ngôi sao sẽ hồi phục 1 mạng <br/>
+        *   Việc đột ngột di chuyển ngược chiều sẽ khiến Doraemon bị đứng lại do `quán tính` <br/>
+        *  Thua cuộc trong trạng thái đang di chuyển sẽ khiến Doraemon gặp trục trặc về bộ nhớ ở vòng chơi sau , bạn cần giữ nút di chuyển và thả nút di chuyển để Doraemon tỉnh lại <br/>
