@@ -14,6 +14,7 @@ public:
 
     void HandleInputAction(SDL_Event events,MainObject* p_obj);
     void HandleMove();
+	void DoneInputAction(SDL_Event events,MainObject* p_obj);
 
 private: 
     int x_val_; 

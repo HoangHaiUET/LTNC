@@ -14,7 +14,7 @@ CakeObject::~CakeObject() {
 }
 
 void CakeObject::HandleMove(const int& x_border, const int& y_border) {
-    rect_.y += y_val_ - y_val_/3;
+    rect_.y += y_val_ - y_val_/2;
     if (rect_.y > SCREEN_HEIGHT + 20) {
         rect_.y = -10;
         int rand_x = rand() % 500;

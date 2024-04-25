@@ -136,19 +136,19 @@ int main(int argc, char* argv[]) {
 		human_object.HandleMove(); 
 		human_object.Show(g_screen);
 
-		p_cake1->set_y_val(1);
+		p_cake1->set_y_val(2);
 		p_cake1->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
 		p_cake1->Show(g_screen);
 
-		p_cake2->set_y_val(2);
+		p_cake2->set_y_val(3);
 		p_cake2->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
 		p_cake2->Show(g_screen);
 
-		p_cake3->set_y_val(3);
+		p_cake3->set_y_val(5);
 		p_cake3->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
 		p_cake3->Show(g_screen);
 
-		p_star->set_y_val(5);
+		p_star->set_y_val(6);
 		p_star->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
 		p_star->Show(g_screen);
 
@@ -276,21 +276,21 @@ int main(int argc, char* argv[]) {
 			if(ret_back_menu == 1 ) is_quit = true;
 			else
 			{
-				SDLCommonFunc::CleanUp();
+				MainObject human_object;
+				human_object.DoneInputAction(g_even, &human_object);
 				human_object.SetRect(300, 420);
 				die_count = 3 ;
 				mark_value = 0 ; 
 				star_value = 0 ;
 				player_power.Init();
-				p_cake1->Reset(-50);
-				p_cake2->Reset(-100);
-				p_cake3->Reset(-100);
+				p_cake1->Reset(-200);
+				p_cake2->Reset(-200);
+				p_cake3->Reset(-200);
 				p_bomb->Reset(-100);
 				SDLCommonFunc::CleanUp();
 			}
 		}
 		
-
 		//update screen;
 		if (SDL_Flip(g_screen) == -1)
 		{

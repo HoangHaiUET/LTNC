@@ -34,10 +34,12 @@ void MainObject::HandleInputAction(SDL_Event events, MainObject* p_obj) {
         p_obj->Show(g_screen);
         switch (events.key.keysym.sym) {
             case SDLK_RIGHT:
-                x_val_ -= HEIGHT_MAIN_OBJECT / 16;
+                //x_val_ -= HEIGHT_MAIN_OBJECT / 16;
+				x_val_ = 0 ;
                 break;
             case SDLK_LEFT:
-                x_val_ += WIDTH_MAIN_OBJECT / 16;
+                //x_val_ += WIDTH_MAIN_OBJECT / 16;
+				x_val_ = 0;
                 break;
         }
     }
@@ -48,4 +50,9 @@ void MainObject::HandleMove() {
     if (rect_.x < 0 || rect_.x + WIDTH_MAIN_OBJECT > SCREEN_WIDTH) {
         rect_.x -= x_val_;
     }
+}
+void MainObject::DoneInputAction(SDL_Event events, MainObject* p_obj) {
+	while (SDL_PollEvent(&events)) {
+		// Discard the event
+	}
 }
