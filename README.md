@@ -114,38 +114,38 @@ Dựa vào nút di chuyển -> hoặc <- để di chuyển Doraemon của bạn 
 
 ### Về source code game:
 
-- Folder SDL Lib:
-    * Chứa các thư viện SDL : SDL_image, SDL_Ttf, SDL_Mixer,SDL ,DLL
-- Folder Debug: Chứa tất cả các thành phần của game:
-    * Chứa các tài nguyên của game : Hình ảnh , thư viện , font chữ trong game 
-- Folder GameSDLCPPDemo: Chứa các file header và file cpp 
-    *`BaseObject.h` và `BaseObject.cpp`:
-        + File khởi tạo các đối tượng chung trong game : Nhân vật , các loại bánh
-        + Khởi tạo hàm Show ảnh của đối tượng trên BackGround game
-        + Cài đặt vị trí của các đối tượng thông qua `SDL_Rect`
-        + Các hàm Set và Get `SDL_Rect` 
-    *`CakeObject.h` và `CakeObject.cpp`: 
-        + Khởi tạo các Cake (có thể coi là các threat trong game)
+- Folder SDL Lib:<br/>
+    * Chứa các thư viện SDL : SDL_image, SDL_Ttf, SDL_Mixer,SDL ,DLL<br/>
+- Folder Debug: Chứa tất cả các thành phần của game:<br/>
+    * Chứa các tài nguyên của game : Hình ảnh , thư viện , font chữ trong game <br/>
+- Folder GameSDLCPPDemo: Chứa các file header và file cpp <br/>
+    *`BaseObject.h` và `BaseObject.cpp`:<br/>
+        + File khởi tạo các đối tượng chung trong game : Nhân vật , các loại bánh <br/>
+        + Khởi tạo hàm Show ảnh của đối tượng trên BackGround game <br/>
+        + Cài đặt vị trí của các đối tượng thông qua `SDL_Rect` <br/>
+        + Các hàm Set và Get `SDL_Rect` <br/>
+    *`CakeObject.h` và `CakeObject.cpp`: <br/>
+        + Khởi tạo các Cake (có thể coi là các threat trong game)<br/>
         + Hàm di chuyển các `Cake` <`HandleMove`> dựa vào `y_val` và có thể set trong main.cpp 
-    *`Common_Function.h` và `Common_Function.cpp`:
-        + Đây là file nguồn chứa tất cả các thư viện và các hàm chung cơ bản nhất được sử dụng trong tất cả các đối tượng 
-        + Khởi tạo màn hình Game < Window > cài đặt kích thước cửa sổ , quản lý tên các đối tượng trong project
-        + Khởi tạo các hàm `LoadImage` , `CleanUp` , `CheckCollision` < Xử lí va chạm> , `ShowMenu`
-    *`ExplosionObject.h` và  `ExplosionObject.cpp` : Cài đặt hình ảnh khi va chạm (Cụ thể là bom nổ) 
-    *`MainObject.h` và `MainObject.cpp` : 
-        + Khởi tạo nhân vật của game , cài đặt các thuộc tính cho nhân vật 
-        + Hàm xử lý bắt sự kiện từ bàn phím `SDL_Event`
-    *`PlayerPower.h` và `PlayerPower.cpp` : Khởi tạo các heart (mạng của nhân vật) , xử lí hình ảnh khi thêm , bớt
-    *`TextObject.h`và `TextObject.cpp` : Cài đặt Font chữ trong game và các đối tượng cần hiện Text
-    *`main.cpp` : Xử lý chung trong game
-        + Khởi tạo cửa sổ màn hình 
-        + Khởi tạo nhân vật , bánh , bom (threats) 
-        + Khởi tạo các Text
-        + Load các hình ảnh : BackGround , human_object , Cake_object , Menu , Exit 
-        + Load các Text , load Explosion 
-        + Xử lí luật chơi : Khi va chạm sẽ được tăng điểm trên thanh điểm , khi va chạm phải bomb hoặc hết mạng thì sẽ bị tính là thua cuộc 
-        + Khi va chạm , các Cake_Object sẽ được Reset 
-        + Xử lí bộ nhớ sau khi thoát game 
+    *`Common_Function.h` và `Common_Function.cpp`:<br/>
+        + Đây là file nguồn chứa tất cả các thư viện và các hàm chung cơ bản nhất được sử dụng trong tất cả các đối tượng <br/>
+        + Khởi tạo màn hình Game < Window > cài đặt kích thước cửa sổ , quản lý tên các đối tượng trong project<br/>
+        + Khởi tạo các hàm `LoadImage` , `CleanUp` , `CheckCollision` < Xử lí va chạm> , `ShowMenu`<br/>
+    *`ExplosionObject.h` và  `ExplosionObject.cpp` : Cài đặt hình ảnh khi va chạm (Cụ thể là bom nổ) <br/>
+    *`MainObject.h` và `MainObject.cpp` : <br/>
+        + Khởi tạo nhân vật của game , cài đặt các thuộc tính cho nhân vật <br/>
+        + Hàm xử lý bắt sự kiện từ bàn phím `SDL_Event`<br/>
+    *`PlayerPower.h` và `PlayerPower.cpp` : Khởi tạo các heart (mạng của nhân vật) , xử lí hình ảnh khi thêm , bớt<br/>
+    *`TextObject.h`và `TextObject.cpp` : Cài đặt Font chữ trong game và các đối tượng cần hiện Text<br/>
+    *`main.cpp` : Xử lý chung trong game<br/>
+        + Khởi tạo cửa sổ màn hình <br/>
+        + Khởi tạo nhân vật , bánh , bom (threats) <br/>
+        + Khởi tạo các Text<br/>
+        + Load các hình ảnh : BackGround , human_object , Cake_object , Menu , Exit<br/> 
+        + Load các Text , load Explosion <br/>
+        + Xử lí luật chơi : Khi va chạm sẽ được tăng điểm trên thanh điểm , khi va chạm phải bomb hoặc hết mạng thì sẽ bị tính là thua cuộc <br/>
+        + Khi va chạm , các Cake_Object sẽ được Reset <br/>
+        + Xử lí bộ nhớ sau khi thoát game <br/>
 
-`Cảnh báo : `
+`Cảnh báo : `<br/>
 Việc di chuyển của Doraemon : Khi bạn di chuyển sang trái hoặc phải mà muốn di chuyển quay ngược chiều thì Doraemon sẽ bị dừng lại trong vòng 1 giây do quán tính . Hơn nữa , khi vừa di chuyển và va chạm với bomb hoặc hết mạng thì trong lần chơi tiếp theo Doraemon sẽ bị choáng và tự di chuyển theo chiều trước khi thua (Bạn phải ấn nút di chuyển và thả nút di chuyển để giúp Doraemon tỉnh táo trở lại)
