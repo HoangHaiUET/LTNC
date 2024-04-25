@@ -24,7 +24,7 @@ Try_Catch là 1 game thuộc thể loại game thiếu nhi . Nhiệm vụ của 
 **Bước 1:** Clone repo này về . <br/>
 Hoặc Chọn Code -> Download Zip 
 
-![image](resources/preview/download.123)
+![image](resources/preview/123.jpg)
 
 - Tất cả code đều nằm trong thư mục src.<br/>
 - Có thể nhảy đến bước 5 để chơi luôn.
