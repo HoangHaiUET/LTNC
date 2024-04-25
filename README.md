@@ -24,7 +24,7 @@ Try_Catch là 1 game thuộc thể loại game thiếu nhi . Nhiệm vụ của 
 **Bước 1:** Clone repo này về . <br/>
 Hoặc Chọn Code -> Download Zip 
 
-![image](resources/preview/download.jpg)
+![image](resources/preview/download.123)
 
 - Tất cả code đều nằm trong thư mục src.<br/>
 - Có thể nhảy đến bước 5 để chơi luôn.
@@ -37,7 +37,7 @@ Hoặc Chọn Code -> Download Zip
 Chờ một chút rồi click vào nút “PLAY GAME” để bắt đầu chơi game.
 <div style="text-align: center;">
 
-![ezgif com-video-to-gif](resources/preview/loading.jpg)
+![ezgif com-video-to-gif](resources/preview/menu.png)
 
 
 
@@ -45,7 +45,7 @@ Chờ một chút rồi click vào nút “PLAY GAME” để bắt đầu chơi
 Và người chơi sẽ ngay lập tức nhìn thấy mèo máy Doraemon 
 <div style="text-align: center;">
 
-![image](resources/preview/menu.png)
+![image](resources/preview/object.png)
 
 </div>
 
