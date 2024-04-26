@@ -2,7 +2,7 @@
 
 # Try Catch - HoangHaiUET
 
-- Thử nghiệm game: [............................](.......)
+- Thử nghiệm game: [https://www.youtube.com/watch?v=j-_HP0hzltc](https://www.youtube.com/watch?v=j-_HP0hzltc)](.......)
 
 # Giới thiệu game
 
